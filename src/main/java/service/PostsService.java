@@ -29,7 +29,6 @@ public class PostsService {
 
             Root<Posts> postRoot = criteriaQuery.from(Posts.class);
 
-// Select titulo and size(comentarios) as separate elements in an array
             criteriaQuery.multiselect(postRoot.get("titulo"), criteriaBuilder.size(postRoot.get("comentarios")));
 
             postCantidadComentariosList = session.createQuery(criteriaQuery).getResultList();
@@ -53,13 +52,9 @@ public class PostsService {
 
             criteriaQuery.select(postRoot);
 
-// Left join comments to potentially include posts with no comments
             Join<Posts, Comentarios> commentsJoin = postRoot.join("comentarios", JoinType.LEFT);
-
-// Filter posts where size of comments collection is 0
             criteriaQuery.where(criteriaBuilder.isEmpty(postRoot.get("comentarios")));
 
-// Order by fechaPublicacion descending
             criteriaQuery.orderBy(criteriaBuilder.desc(postRoot.get("fechaPublicacion")));
 
             posts = session.createQuery(criteriaQuery).getResultList();
