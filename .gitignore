@@ -25,6 +25,8 @@ hs_err_pid*
 replay_pid*
 =======
 .gradle
+*.gradle
+*.bat
 build/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
