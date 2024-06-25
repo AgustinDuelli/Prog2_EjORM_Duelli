@@ -1,0 +1,18 @@
+<hibernate-configuration>
+    <session-factory>
+        <!--  JDBC Database connection settings  -->
+        <property name="hibernate.connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="hibernate.connection.url">jdbc:mysql://localhost:3340/posts</property>
+        <property name="hibernate.connection.username">root</property>
+        <property name="hibernate.connection.password">ej262024</property>
+        <!--  Hibernate properties  -->
+        <property name="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</property>
+        <property name="hibernate.hbm2ddl.auto">update</property>
+        <!--  Configuración de logs de Hibernate  -->
+        <property name="hibernate.show_sql">true</property>
+        <property name="hibernate.format_sql">false</property>
+        <!--  Mention annotated class  -->
+        <mapping class="entities.Posts"/>
+        <mapping class="entities.Comentarios"/>
+    </session-factory>
+</hibernate-configuration>
